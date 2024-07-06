@@ -25,4 +25,14 @@ return [
     '@hotwired/turbo' => [
         'version' => '7.3.0',
     ],
+    '@symfony/ux-live-component' => [
+        'path' => './vendor/symfony/ux-live-component/assets/dist/live_controller.js',
+    ],
+    '@picocss/pico' => [
+        'version' => '2.0.6',
+    ],
+    '@picocss/pico/css/pico.min.css' => [
+        'version' => '2.0.6',
+        'type' => 'css',
+    ],
 ];

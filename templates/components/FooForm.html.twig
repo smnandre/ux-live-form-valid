@@ -1,0 +1,41 @@
+<div{{ attributes }}>
+
+
+    <div class="grid">
+        <article>
+            {{ form_start(form) }}
+             {% if form is rootform %}
+                 {{ form_errors(form) }}
+             {% endif %}
+
+            {{ form_row(form.name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.zip_code) }}
+            {{ form_row(form.city) }}
+
+            <button type="submit" value="Submit" {{ form.vars.valid ? '' : 'disabled' }}>Submit</button>
+
+            {{ form_end(form) }}
+        </article>
+
+        <div>
+            <article>
+                <dl>
+                    <dt>Form valid</dt>
+                    <dd>{{ form.vars.valid }}</dd>
+                </dl>
+            </article>
+
+            <hr>
+
+            <article>
+                {{ dump(this.formValues) }}
+
+                {{ dump(this.validatedFields) }}
+            </article>
+
+        </div>
+    </div>
+
+
+</div>
