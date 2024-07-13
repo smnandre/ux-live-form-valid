@@ -16,7 +16,7 @@ final class FooForm extends AbstractController
     use DefaultActionTrait;
     use ComponentWithFormTrait;
 
-    #[LiveProp]
+    #[LiveProp(writable: true)]
     public array $initialFormData = [
         'name' => '',
         'email' => '',
@@ -28,4 +28,9 @@ final class FooForm extends AbstractController
     {
         return $this->createForm(FooType::class, $this->initialFormData);
     }
+
+    // public function __invoke()
+    // {
+    //     $this->submitForm(true);
+    // }
 }

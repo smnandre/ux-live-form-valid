@@ -1,39 +1,57 @@
 <div{{ attributes }}>
 
-
     <div class="grid">
         <article>
-            {{ form_start(form) }}
-             {% if form is rootform %}
-                 {{ form_errors(form) }}
-             {% endif %}
+            {{ form_start(form, {
+                attr: {
+                    'data-action': 'live#action:prevent',
+                    'data-live-action-param': 'save',
+                    'autocomplete': 'off'
+                }
+            }) }}
+             {{ form_errors(form) }}
 
             {{ form_row(form.name) }}
             {{ form_row(form.email) }}
             {{ form_row(form.zip_code) }}
             {{ form_row(form.city) }}
 
-            <button type="submit" value="Submit" {{ form.vars.valid ? '' : 'disabled' }}>Submit</button>
+            <button type="submit" value="Submit" {{ form.vars.submitted and form.vars.valid ? '' : 'disabled' }}>Submit</button>
 
             {{ form_end(form) }}
         </article>
 
         <div>
             <article>
-                <dl>
-                    <dt>Form valid</dt>
-                    <dd>{{ form.vars.valid }}</dd>
+                <dl class="grid">
+                    <div>
+                        <dt>Form valid</dt>
+                        <dd>{{ form.vars.valid }}</dd>
+                    </div>
+                    <div>
+                        <dt>Form errors</dt>
+                        <dd>{{ form.vars.errors|length }}</dd>
+                    </div>
+                    <div>
+                        <dt>Form Submitted</dt>
+                        <dd>{{ form.vars.submitted }}</dd>
+                    </div>
+                    <div>
+                        <dt>Form Validated</dt>
+                        <dd>{{ this.isValidated }}</dd>
+                    </div>
+                </dl>
+                <dl class="grid">
+                    <div>
+                        <dt>Form Values</dt>
+                        <dd>{{ this.formValues|length }}</dd>
+                    </div>
+                    <div>
+                        <dt>Form Validated</dt>
+                        <dd>{{ this.validatedFields|length }}</dd>
+                    </div>
                 </dl>
             </article>
-
-            <hr>
-
-            <article>
-                {{ dump(this.formValues) }}
-
-                {{ dump(this.validatedFields) }}
-            </article>
-
         </div>
     </div>
 
